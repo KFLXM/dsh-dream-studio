@@ -1,0 +1,116 @@
+# 时空造梦：第一段挂宿主服务与浏览器面板（行名就是包名），
+# 第二段是随包附带的「造梦助手」agent 预设。
+- insert:
+    - id: dream-studio
+      name: 'dsh-dream-studio'
+      inject:
+        - llm
+
+# ---- 随包的 agent 预设（作者源文件 presets/studio-assistant/cordis.patch.yml）----
+- insert:
+    - id: preset-manju
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: manju
+        name: 造梦助手
+        description: 漫剧编剧兼剧本医生，也接日常秘书事务：分集大纲、剧本体检、台词打磨、文档表格、日程提醒。写剧本时先建账本、交付前自评+冷读，问题自己找。
+        order: 5
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                你是「时空造梦」的漫剧编剧兼剧本医生，也是用户的日常助手。剧本/漫剧是主线，其它事务按秘书方式接。
+                写或改剧本时，必须走这个循环：
+                1. 先看 story/canon.md、story/ledger.md；没有就补齐再动笔。上一集结尾状态 = 这一集开场状态，不许重置。
+                2. 先写因果链（因为…所以…但是…于是…），再写正文；场与场是"因此/但是"，不是"然后"。
+                3. 人物入场必须由在场者已做出的行动引出；新角色首登场要交代他想要什么、挡了谁、和主角什么张力。
+                4. 台词每句都要有目的（要东西/挡回去/试探/掩饰），不写解释句、客套句、总结句；一段 0–15 字。
+                5. 交付前必须：按 story-doctor 的 21 项自评 → 派冷读子代理找问题 → 修 → 复核。没走完不许说"写好了"。
+                6. 交付时附三段：这一集的戏眼、你认为最弱的三处、冷读发现并已修掉的问题。
+                其它事务按秘书方式：先问最关键的一两个问题；涉及对外发送、删除、覆盖、花钱、承诺时间的动作，先说清再动手；交付成品而不是模板；文档用 office 技能；有时限的事用定时任务提醒。
+                审美底线：人物要有一个说不出口的东西；每集至少一句能被截图的话；结尾必须是未完成，不是总结。宁可说"这版不行"，也不要交一个圆滑的平庸稿。用户不该替你发现问题。
+                格式、字段、资产、出片遵循 dream-studio-h3；镜头可拍性遵循 manju-lens。故事不过自检表，不进段-格。
+              suffix: 本会话专注漫剧创作与日常事务。需要修改 DSH 插件或新建 agent 预设时，请切换到创造模式（cordis 预设）。
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65536
+          - id: time-context
+            name: '@deepseek-ai/dsh-time-context'
+          - id: tool-bash
+            name: '@deepseek-ai/dsh-tool-bash'
+            disabled: !!js process.platform === 'win32'
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            disabled: !!js process.platform !== 'win32'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+            config:
+              applyPatch: false
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+            config:
+              sampleOverCapGlobResults: false
+          - id: tool-jobs
+            name: '@deepseek-ai/dsh-tool-jobs'
+          - id: tool-schedule
+            name: '@deepseek-ai/dsh-tool-schedule'
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: command-goal
+            name: '@deepseek-ai/dsh-command-goal'
+          - id: tool-goal
+            name: '@deepseek-ai/dsh-tool-goal'
+          - id: tool-todo
+            name: '@deepseek-ai/dsh-tool-todo'
+            config:
+              allowParallelInProgress: true
+          - id: tool-ask-user
+            name: '@deepseek-ai/dsh-tool-ask-user'
+          - id: tool-web
+            name: '@deepseek-ai/dsh-tool-web'
+            config:
+              fetch: true
+              searchTimeoutMs: 60000
+          - id: present
+            name: '@deepseek-ai/dsh-tool-present'
+          - id: delegation
+            name: cordis:group
+            group: true
+            isolate:
+              workflowEngine: true
+            config:
+              - id: tool-subagent-control
+                name: '@deepseek-ai/dsh-tool-subagent-control'
+              - id: tool-subagent
+                name: '@deepseek-ai/dsh-tool-subagent'
+                config:
+                  provider: spawn
+                  toolName: subagent
+                  modelSelection: true
+                  modelDiscovery: true
+              - id: tool-subagent-fork
+                name: '@deepseek-ai/dsh-tool-subagent'
+                config:
+                  provider: fork
+                  toolName: subagent_fork
+          - id: compaction
+            name: cordis:group
+            group: true
+            isolate:
+              compaction: true
+              toolResultPruner: true
+            config:
+              - id: compaction-basic
+                name: '@deepseek-ai/dsh-compaction-basic'
+              - id: command-compact
+                name: '@deepseek-ai/dsh-command-compact'
+              - id: tool-result-pruner
+                name: '@deepseek-ai/dsh-compaction-tool-result-pruner'
+                config:
+                  thresholdChars: 8192
+                  headChars: 4096
+                  tailChars: 1024

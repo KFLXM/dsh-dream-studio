@@ -1,0 +1,468 @@
+{
+  "20": {
+    "inputs": {
+      "fl2va_model": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "ref2va_model": "无",
+      "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "video_vae": "minimax_h3_video_vae_int8_convrot.safetensors",
+      "audio_vae": "minimax_h3_audio_vae_fp32.safetensors"
+    },
+    "class_type": "MiniMaxH3EasyLoader",
+    "_meta": {
+      "title": "MiniMax H3 Easy 加载器",
+      "cnr_id": "comfyui-minimaxh3-easy",
+      "ver": "1.0.9"
+    }
+  },
+  "21": {
+    "inputs": {
+      "mode": "reference",
+      "prompt": "<图一>萧陌，黑发白袍男子\r\n<图二>玲珑，银白发色，龙角少女\r\n<图三>月神，灰白发色，灰白长袍仙女\r\n<图4>剑庐外青石大坪，四周苍松挂雪；坪中央一片空地是练剑位；坪北是剑庐木门与门侧一对石狮子；坪南远眺云海。冬日清晨冷青天光自顶前，雪面反冷蓝，松影斜投坪上。\r\n\r\n[镜头1] 中近景，过双人前景近景。月神居画面中央，萧陌与玲珑在画面左右两侧前景虚焦，抬手，指尖轻托玲珑一缕白发，月神嘴角带浅笑，视线先落萧陌再落玲珑，银白柔光自月神身后泛起，额间月印发亮。温柔御姐音，说：“她叫玲珑，以后归你教。”\r\n\r\n[镜头2] 00:03.50处切换至中近景，过肩近景。萧陌居画面左，侧脸对镜头，拱手，指节收紧，眉峰平直，下颌咬紧，视线直视画外前方，冷青天光侧前，耳尖仍带残红。清冷少年音，说：“弟子不收徒。”\r\n\r\n[镜头3] 00:06.50处切换至固定近景。月神居画面中央，收回托发的手，负于身后，眼底带笑，眉梢微挑，视线直视画外左，银白柔光自下，额间月印微凉。温柔御姐音，说：“不是徒弟。”\r\n\r\n[镜头4] 00:08.50处切换至固定中景。萧陌在画面左，月神在画面中已转身欲走，玲珑在画面右拽着萧陌袍角，月神白袍一拂，已飘出三步，萧陌脸黑；玲珑蓝瞳眨眼；月神背影带笑，持物：玲珑右手拽萧陌袍角，冷青天光自顶前，月神银白柔光渐远。玲珑用软糯少女音，说：“是师妹。”\r\n\r\n整体声景：雪坪，月神银白柔光，松影\r\n\r\n非环境音效音乐：NA\n",
+      "resolution": "540P",
+      "aspect_ratio": "16:9",
+      "width": 1280,
+      "height": 736,
+      "seconds": 12.3,
+      "advanced": true,
+      "fps": 24,
+      "keyframe_role": "first",
+      "ref_image_size": "1.5k",
+      "reference_mention_mode": "index",
+      "prompt_optimizer_settings": false,
+      "prompt_optimizer_scene_guide": "none",
+      "h3_bundle": [
+        "20",
+        0
+      ],
+      "media_1": [
+        "116",
+        0
+      ],
+      "media_type_1": "image",
+      "media_2": [
+        "117",
+        0
+      ],
+      "media_type_2": "image",
+      "media_3": [
+        "118",
+        0
+      ],
+      "media_type_3": "image",
+      "media_4": [
+        "119",
+        0
+      ],
+      "media_type_4": "image",
+      "prompt_optimizer_resources": "[{\"type\":\"image\",\"tag\":\"<Picture 1>\",\"name\":\"萧陌.png\",\"asset\":{\"filename\":\"萧陌.png\",\"subfolder\":\"\",\"storage\":\"input\"}},{\"type\":\"image\",\"tag\":\"<Picture 2>\",\"name\":\"b3705f97-玲珑.png\",\"asset\":{\"filename\":\"b3705f97-玲珑.png\",\"subfolder\":\"\",\"storage\":\"input\"}},{\"type\":\"image\",\"tag\":\"<Picture 3>\",\"name\":\"ea87ae67-月神.png\",\"asset\":{\"filename\":\"ea87ae67-月神.png\",\"subfolder\":\"\",\"storage\":\"input\"}},{\"type\":\"image\",\"tag\":\"<Picture 4>\",\"name\":\"a132b9dc-S01-草稿-20261105142712.png\",\"asset\":{\"filename\":\"a132b9dc-S01-草稿-20261105142712.png\",\"subfolder\":\"\",\"storage\":\"input\"}}]",
+      "prompt_optimizer_marker": "{}",
+      "prompt_optimizer_prompt_connected": false
+    },
+    "class_type": "MiniMaxH3Easy",
+    "_meta": {
+      "title": "MiniMax H3 Easy",
+      "cnr_id": "comfyui-minimaxh3-easy",
+      "ver": "1.0.9"
+    }
+  },
+  "22": {
+    "inputs": {
+      "h3_context": [
+        "21",
+        1
+      ]
+    },
+    "class_type": "MiniMaxH3EasyOutput",
+    "_meta": {
+      "title": "MiniMax H3 Easy 输出",
+      "cnr_id": "comfyui-minimaxh3-easy",
+      "ver": "1.0.9"
+    }
+  },
+  "23": {
+    "inputs": {
+      "h3_context": [
+        "21",
+        1
+      ]
+    },
+    "class_type": "MiniMaxH3EasyAspectRatio",
+    "_meta": {
+      "title": "宽高比（二采跟随）",
+      "cnr_id": "comfyui-minimaxh3-easy",
+      "ver": "5ee7d61c46cd6b0fa1994a390be44f17f9b72919"
+    }
+  },
+  "45": {
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "二采·模型（可换W4A8高清）",
+      "cnr_id": "comfy-core",
+      "ver": "0.32.0"
+    }
+  },
+  "46": {
+    "inputs": {
+      "selection": "sol-attn",
+      "selection.tau": 1.3,
+      "start_percent": 0.2,
+      "end_percent": 1,
+      "dense_blocks": "",
+      "min_tokens": 12288,
+      "extra_tokens": 256,
+      "sink_conditioning": "exact_kv_and_rows",
+      "verbose": false,
+      "model": [
+        "96",
+        0
+      ]
+    },
+    "class_type": "BlockSparseAttention",
+    "_meta": {
+      "title": "二采·稀疏注意力"
+    }
+  },
+  "47": {
+    "inputs": {
+      "shift_video": 8,
+      "shift_audio": 3,
+      "model": [
+        "46",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3SigmaShift",
+    "_meta": {
+      "title": "二采·SigmaShift"
+    }
+  },
+  "53": {
+    "inputs": {
+      "noise_seed": 1054457097398815
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "二采·随机噪波"
+    }
+  },
+  "65": {
+    "inputs": {
+      "h3_context": [
+        "21",
+        1
+      ],
+      "second_pass_video_latent": [
+        "106",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3EasySecondPassConditioning",
+    "_meta": {
+      "title": "二采·条件",
+      "cnr_id": "comfyui-minimaxh3-easy",
+      "ver": "1.0.9"
+    }
+  },
+  "66": {
+    "inputs": {
+      "scheduler": "simple",
+      "steps": 3,
+      "denoise": 0.35,
+      "model": [
+        "47",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "二采·调度（beta/3步/0.25）",
+      "cnr_id": "comfy-core",
+      "ver": "0.32.0"
+    }
+  },
+  "67": {
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "二采·采样器",
+      "cnr_id": "comfy-core",
+      "ver": "0.32.0"
+    }
+  },
+  "70": {
+    "inputs": {
+      "samples": [
+        "105",
+        0
+      ],
+      "vae": [
+        "22",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "二采·高清视频解码",
+      "cnr_id": "comfy-core",
+      "ver": "0.32.0"
+    }
+  },
+  "80": {
+    "inputs": {
+      "fps": [
+        "22",
+        4
+      ],
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "chroma_subsampling": "auto",
+      "codec": "none",
+      "images": [
+        "124",
+        0
+      ],
+      "audio": [
+        "121",
+        1
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "二采·成片（1080P）",
+      "cnr_id": "comfy-core",
+      "ver": "0.32.0"
+    }
+  },
+  "83": {
+    "inputs": {
+      "filename_prefix": "video/chained/result",
+      "format": "auto",
+      "format.codec": "auto",
+      "codec": "auto",
+      "video": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "保存视频"
+    }
+  },
+  "96": {
+    "inputs": {
+      "lora_name": "minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors",
+      "strength_model": 0.75,
+      "model": [
+        "45",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "二采加速"
+    }
+  },
+  "104": {
+    "inputs": {
+      "model_name": "minimax_h3_latent_upscaler_3d_bf16.safetensors",
+      "width": 1376,
+      "height": 768,
+      "device": "cuda",
+      "precision": "bf16"
+    },
+    "class_type": "MMH3LatentUpscaleWithModelParams",
+    "_meta": {
+      "title": "二采·H3 3D 超分（1920×1088）"
+    }
+  },
+  "105": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "47",
+        0
+      ],
+      "conditioning": [
+        "120",
+        0
+      ],
+      "latent": [
+        "112",
+        0
+      ],
+      "noise": [
+        "53",
+        0
+      ],
+      "sampler": [
+        "67",
+        0
+      ],
+      "sigmas": [
+        "66",
+        0
+      ],
+      "latent_upscale_param": [
+        "104",
+        0
+      ]
+    },
+    "class_type": "MMH3UltimateUpscale",
+    "_meta": {
+      "title": "二采·latent 分块放大（省显存）"
+    }
+  },
+  "106": {
+    "inputs": {
+      "av_latent": [
+        "112",
+        0
+      ]
+    },
+    "class_type": "LTXVSeparateAVLatent",
+    "_meta": {
+      "title": "拆分音频 latent"
+    }
+  },
+  "107": {
+    "inputs": {
+      "samples": [
+        "106",
+        1
+      ],
+      "vae": [
+        "22",
+        3
+      ]
+    },
+    "class_type": "VAEDecodeAudio",
+    "_meta": {
+      "title": "解音频"
+    }
+  },
+  "112": {
+    "inputs": {
+      "file": "Latent_A.safetensors",
+      "on_missing": "error",
+      "stage": "main",
+      "project_id": "测试"
+    },
+    "class_type": "DreamStudio_LatentLoad",
+    "_meta": {
+      "title": "造梦 · 续写 latent 读取"
+    }
+  },
+  "116": {
+    "inputs": {
+      "image": "萧陌.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "首帧/参考图"
+    }
+  },
+  "117": {
+    "inputs": {
+      "image": "b3705f97-玲珑.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "尾帧/参考图"
+    }
+  },
+  "118": {
+    "inputs": {
+      "image": "ea87ae67-月神.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "尾帧/参考图"
+    }
+  },
+  "119": {
+    "inputs": {
+      "image": "a132b9dc-S01-草稿-20261105142712.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "尾帧/参考图"
+    }
+  },
+  "120": {
+    "inputs": {
+      "context_length": "22",
+      "audio_context_length": 24,
+      "conditioning": [
+        "65",
+        0
+      ],
+      "vae": [
+        "22",
+        2
+      ],
+      "latent": [
+        "112",
+        0
+      ],
+      "audio_vae": [
+        "22",
+        3
+      ],
+      "context_latent": [
+        "122",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3MotionContext",
+    "_meta": {
+      "title": "★ Motion Context（从上段二采 latent 续接）"
+    }
+  },
+  "121": {
+    "inputs": {
+      "trim_frames": [
+        "120",
+        1
+      ],
+      "fps": 24,
+      "match_tail": true,
+      "images": [
+        "70",
+        0
+      ],
+      "audio": [
+        "107",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3MotionContextTrim",
+    "_meta": {
+      "title": "★ Trim（裁掉开头 22 帧引导）"
+    }
+  },
+  "122": {
+    "class_type": "MiniMaxH3MotionContextLoadLatent",
+    "inputs": {
+      "latent_path": "",
+      "clip_index": 0
+    }
+  },
+  "124": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "121",
+        0
+      ],
+      "batch_index": 1,
+      "length": 243
+    }
+  }
+}

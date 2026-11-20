@@ -1,0 +1,180 @@
+{
+  "1": {
+    "inputs": {
+      "unet_name": "Qwen_image_2.1_bf16.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "加载 Qwen-Image-2.1 大模型"
+    }
+  },
+  "2": {
+    "inputs": {
+      "clip_name": "qwen3vl_8b_bf16.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载 Qwen CLIP 文本编码器（必须 qwen3vl_8b）"
+    }
+  },
+  "3": {
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载 Qwen-Image-2.1 VAE（必须 2.1 专用，见说明）"
+    }
+  },
+  "4": {
+    "inputs": {
+      "shift": 3,
+      "sampling": "flow",
+      "model": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingAuraFlow",
+    "_meta": {
+      "title": "Qwen 采样配置（必须）"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "角色三视图参考图，16:9横版，8K高清，一图共四格，纯白干净背景：画面左侧为超大3/4角度头肩正脸特写，右侧依次展示完整正面、90度侧面、背面全身三个全身视图。所有视角保持同一人物，五官、发型、服装与配饰完全一致、不漂移，娇小玲珑七头身比例，真实发丝细节，站姿自然，双臂放松垂于身侧。半写实古风CG风格，细腻人物建模质感。\n\n清透灵动的年轻少女，身高约158cm，娇小七头身比例，身形纤细，肩窄腰细，头身比例正常，头部大小协调。皮肤莹白偏透明，细腻通透，像久不见日光的瓷。\n\n精致小巧的圆脸，脸型圆润，下巴收得圆润，脸颊带一点婴儿肥。一对微弯柳眉，眉色浅。一双大而圆的杏眼，眼尾微垂，瞳色浅琥珀带一点金，眼神直率没有防备，像第一次看人。鼻梁小巧，鼻尖微翘。唇形饱满，唇珠明显，唇色淡粉，嘴角自然微张，表情好奇。左侧头肩特写清晰展示杏眼的琥珀色、唇珠、眼下极淡的浅青血管与耳后细节。\n\n浅银白长发，发根近月白，发丝在光下泛极淡冷光，发梢末端有一层几乎看不见的青色微光，像剑锋的反光。半束半披：脑后系一条月白发带，打一个松结，两条带尾垂至腰际；其余头发自然披落至腰，发梢微卷，额前碎发齐眉，鬓角两缕贴颊。\n\n左耳后有一枚极淡的剑形银纹，约一寸长，浅到需侧光才看得见；不做成明显记号。\n\n服装从上到下完整描述（素白短打）：\n\n上半身：素白交领短打，左衽交叠，领口开得浅，露出一小截颈与锁骨。袖型为宽大广袖，袖口垂至腕下，袖缘压一道细银线。衣料为薄软棉麻与半透明薄纱两层，外层纱在光下透出内层布纹，衣身有自然褶皱与轻微飘动感。\n\n颈部：不佩项链；颈侧有一道极淡的旧痕，像被什么磨过。\n\n腰部：系白色细腰带，在左侧打一个松松的结，结头垂下两寸；腰侧系一枚素木小牌，约拇指大，无字无纹。\n\n下半身：素白短裙裤，长度及膝；外层素白，内衬一层月白薄纱，走动时薄纱从裙摆下缘露出半寸；裙摆边缘一道极细银线锁边，裙身有细密竖向褶。\n\n脚部：赤足，脚背干净，脚趾自然；左脚踝系一枚细银铃，铃身小如豆，铃舌可见。\n\n配饰与手持物：右手腕一串小银铃，三颗，铃间以细银链相连；怀里抱一柄断剑——剑身只剩半截，断口泛青，剑柄缠月白旧布，被她用双臂圈在胸前。\n\n姿态气质：站姿轻，脚尖微踮，重心偏前，像随时会跳起来；双手抱剑在胸前。周身气质干净、透亮，像刚凝成人形不久。\n\n半写实古风CG渲染，次世代仙侠游戏3D角色立绘质感，电影级角色设定原画；皮肤为真实次表面散射质感、细腻通透，发丝根根分明、物理真实垂顺，衣料有真实织物质感与自然褶皱，薄纱半透明层次清晰；柔和均匀的影棚柔光，冷白主色调，淡青环境光，发丝与肩线有干净的冷色边缘光；超高细节，8K分辨率，PBR材质，浅景深，构图工整，四个视图从头到脚全部清晰完整，无裁切。\n",
+      "clip": [
+        "12",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "正向提示词（支持中文）"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "12",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "负向提示词"
+    }
+  },
+  "7": {
+    "inputs": {
+      "width": 1920,
+      "height": 1088,
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "空 Latent（采样时自动转为 64 通道 /16）"
+    }
+  },
+  "8": {
+    "inputs": {
+      "seed": 222652417273242,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "5",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "latent_image": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "采样器（文生图）"
+    }
+  },
+  "9": {
+    "inputs": {
+      "samples": [
+        "8",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE 解码"
+    }
+  },
+  "10": {
+    "inputs": {
+      "filename_prefix": "qwen_image21_t2i",
+      "images": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图片"
+    }
+  },
+  "12": {
+    "inputs": {
+      "lora_name": "Qwen2.1\\ZIT-LoRA_AICG_GIMAGE2_STYLE_0.0.2_c2-st8000.safetensors",
+      "strength_model": 0.7,
+      "strength_clip": 1,
+      "model": [
+        "13",
+        0
+      ],
+      "clip": [
+        "13",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "加载 LoRA（可选）"
+    }
+  },
+  "13": {
+    "inputs": {
+      "lora_name": "Qwen2.1\\zhican21_c1-st9000.safetensors",
+      "strength_model": 0.7,
+      "strength_clip": 1,
+      "model": [
+        "1",
+        0
+      ],
+      "clip": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "加载 LoRA（可选）"
+    }
+  }
+}

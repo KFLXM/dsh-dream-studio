@@ -1,0 +1,168 @@
+{
+  "1": {
+    "inputs": {
+      "file": "result_00160_.mp4",
+      "video-preview": ""
+    },
+    "class_type": "LoadVideo",
+    "_meta": {
+      "title": "加载视频",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.0"
+    }
+  },
+  "2": {
+    "inputs": {
+      "video": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "GetVideoComponents",
+    "_meta": {
+      "title": "获取视频元素",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.0"
+    }
+  },
+  "3": {
+    "inputs": {
+      "unet_name": "RelayVSR\\relayvsr_x4_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.0"
+    }
+  },
+  "4": {
+    "inputs": {
+      "vae_name": "RelayVSR\\relayvsr_flash_vae_x4_fp32.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.0"
+    }
+  },
+  "5": {
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "images": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "RelayVSRConditioning",
+    "_meta": {
+      "title": "RelayVSRConditioning",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.0"
+    }
+  },
+  "6": {
+    "inputs": {
+      "seed": 0,
+      "steps": 1,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "5",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "latent_image": [
+        "5",
+        1
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.0"
+    }
+  },
+  "7": {
+    "inputs": {
+      "detail": 0.5,
+      "vae": [
+        "4",
+        0
+      ],
+      "samples": [
+        "6",
+        0
+      ],
+      "images": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "VSRDecode",
+    "_meta": {
+      "title": "VSR Decode",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.0"
+    }
+  },
+  "8": {
+    "inputs": {
+      "fps": [
+        "2",
+        2
+      ],
+      "bit_depth": "auto",
+      "color_space": "sRGB",
+      "chroma_subsampling": "auto",
+      "codec": "none",
+      "images": [
+        "7",
+        0
+      ],
+      "audio": [
+        "2",
+        1
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "创建视频",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.0"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "video/ComfyUI",
+      "format": "auto",
+      "format.codec": "auto",
+      "codec": "auto",
+      "video": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "保存视频",
+      "cnr_id": "comfy-core",
+      "ver": "0.44.0"
+    }
+  }
+}

@@ -1,0 +1,940 @@
+{
+  "10": {
+    "inputs": {
+      "image": "houyuan_01_talk.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "首帧/参考图"
+    }
+  },
+  "11": {
+    "inputs": {
+      "image": "v2_04_walk.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "尾帧/参考图"
+    }
+  },
+  "12": {
+    "inputs": {
+      "image": "v2_02_coax.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "关键帧1（格1·@0）"
+    }
+  },
+  "13": {
+    "inputs": {
+      "image": "v2_03_relent.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "关键帧2（格2·@96）"
+    }
+  },
+  "14": {
+    "inputs": {
+      "image": "3 (3).png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "关键帧3（格3·@192）"
+    }
+  },
+  "15": {
+    "inputs": {
+      "image": "4 (3).png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "关键帧4（格4·@120）"
+    }
+  },
+  "20": {
+    "inputs": {
+      "fl2va_model": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "ref2va_model": "无",
+      "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "video_vae": "minimax_h3_video_vae_int8_convrot.safetensors",
+      "audio_vae": "minimax_h3_audio_vae_fp32.safetensors"
+    },
+    "class_type": "MiniMaxH3EasyLoader",
+    "_meta": {
+      "title": "MiniMax H3 Easy 加载器"
+    }
+  },
+  "21": {
+    "inputs": {
+      "mode": "image",
+      "prompt": "How the reference pictures align with the target video — Picture 1 (first frame) aligns with the 0.00-second mark; Picture 4 (last frame) aligns with the 8.00-second mark. Key frames 2 and 3 are anchored at 1.67s and 3.33s respectively.\r\n\r\nintegrated_multimodal_description:\r\n[Shot 1] Cinematic xianxia CG, soft daylight on a stone path through a bamboo courtyard with white flowering trees. The black-haired young man in moon-white robes (S2, calm low voice) stands on the left, hands clasped behind his back, turning his head slightly. The white-haired dragon-horned girl (S1, bright lively teenage voice) stands on the right, looking up at him with mouth slightly open as if asking a question. She says: <d>[中文] 师兄，你就教教我嘛。</d> The camera holds a steady medium two-shot.\r\n\r\n[Shot 2] At 00:02, cut to over-the-shoulder close-up from behind the young man's right shoulder. The girl on the right is in close-up, her blue eyes sparkling, one hand gently tugging his sleeve, cheeks slightly puffed in a spoiled expression. She says in a drawn-out whine: <d>[中文] 师兄——</d> Focus softens toward the young man on the left.\r\n\r\n[Shot 3] At 00:04, reverse over-the-shoulder close-up from behind the girl's left shoulder. The young man on the left fills the frame, his brows twitching almost imperceptibly, his cold expression softening into reluctant indulgence. He says with a slow breath: <d>[中文] ……行了，跟我来。</d>\r\n\r\n[Shot 4] At 00:06, wide back view of the two walking side by side along the stone path toward distant temple halls. The girl on the right says cheerfully: <d>[中文] 嘿嘿，师兄最好了！</d> The young man on the left replies dryly: <d>[中文] 话多。</d> Her hands gesture lightly as she talks, his robes ripple in the breeze, bamboo shadows dappling the path.\r\n\r\noverall_soundscape: Bamboo leaves rustling in a gentle breeze, distant temple bells, soft fabric rustle, footsteps on the stone path, birds chirping.\r\n\r\nnon_diegetic_music: A gentle xianxia melody of flute and guzheng at a slow, warm tempo, light strings shimmering softly in the background.\r\n\n",
+      "resolution": "480P",
+      "aspect_ratio": "16:9",
+      "width": 1280,
+      "height": 736,
+      "seconds": 8,
+      "advanced": true,
+      "fps": 24,
+      "keyframe_role": "first",
+      "ref_image_size": "1.5k",
+      "reference_mention_mode": "index",
+      "prompt_optimizer_settings": false,
+      "prompt_optimizer_scene_guide": "none",
+      "h3_bundle": [
+        "20",
+        0
+      ],
+      "media_1": [
+        "10",
+        0
+      ],
+      "media_type_1": "image",
+      "media_2": [
+        "11",
+        0
+      ],
+      "media_type_2": "image",
+      "prompt_optimizer_resources": "[{\"type\":\"image\",\"tag\":\"<Picture 1>\",\"name\":\"houyuan_01_talk.png\",\"asset\":{\"filename\":\"houyuan_01_talk.png\",\"subfolder\":\"\",\"storage\":\"input\"}},{\"type\":\"image\",\"tag\":\"<Picture 2>\",\"name\":\"v2_04_walk.png\",\"asset\":{\"filename\":\"v2_04_walk.png\",\"subfolder\":\"\",\"storage\":\"input\"}}]",
+      "prompt_optimizer_marker": "{}",
+      "prompt_optimizer_prompt_connected": false
+    },
+    "class_type": "MiniMaxH3Easy",
+    "_meta": {
+      "title": "MiniMax H3 Easy"
+    }
+  },
+  "22": {
+    "inputs": {
+      "h3_context": [
+        "21",
+        1
+      ]
+    },
+    "class_type": "MiniMaxH3EasyOutput",
+    "_meta": {
+      "title": "MiniMax H3 Easy 输出"
+    }
+  },
+  "23": {
+    "inputs": {
+      "h3_context": [
+        "21",
+        1
+      ]
+    },
+    "class_type": "MiniMaxH3EasyAspectRatio",
+    "_meta": {
+      "title": "宽高比（二采跟随）"
+    }
+  },
+  "30": {
+    "inputs": {
+      "frame_idx": 48,
+      "positive": [
+        "22",
+        0
+      ],
+      "latent": [
+        "22",
+        1
+      ],
+      "vae": [
+        "22",
+        2
+      ],
+      "image": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3AddGuide",
+    "_meta": {
+      "title": "AddGuide #1（格1·frame_idx=0）"
+    }
+  },
+  "31": {
+    "inputs": {
+      "frame_idx": 96,
+      "positive": [
+        "30",
+        0
+      ],
+      "latent": [
+        "22",
+        1
+      ],
+      "vae": [
+        "22",
+        2
+      ],
+      "image": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3AddGuide",
+    "_meta": {
+      "title": "AddGuide #2（格2·frame_idx=96）"
+    }
+  },
+  "32": {
+    "inputs": {
+      "frame_idx": 192,
+      "positive": [
+        "31",
+        0
+      ],
+      "latent": [
+        "22",
+        1
+      ],
+      "vae": [
+        "22",
+        2
+      ],
+      "image": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3AddGuide",
+    "_meta": {
+      "title": "AddGuide #3（格3·frame_idx=192）"
+    }
+  },
+  "33": {
+    "inputs": {
+      "frame_idx": 120,
+      "positive": [
+        "32",
+        0
+      ],
+      "latent": [
+        "22",
+        1
+      ],
+      "vae": [
+        "22",
+        2
+      ],
+      "image": [
+        "15",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3AddGuide",
+    "_meta": {
+      "title": "AddGuide #4（格4·frame_idx=120）"
+    }
+  },
+  "40": {
+    "inputs": {
+      "selection": "sol-attn",
+      "selection.tau": 1.3,
+      "start_percent": 0.2,
+      "end_percent": 1,
+      "dense_blocks": "",
+      "min_tokens": 12288,
+      "extra_tokens": 256,
+      "sink_conditioning": "exact_kv_and_rows",
+      "verbose": false,
+      "model": [
+        "42",
+        0
+      ]
+    },
+    "class_type": "BlockSparseAttention",
+    "_meta": {
+      "title": "一采·稀疏注意力"
+    }
+  },
+  "41": {
+    "inputs": {
+      "shift_video": 8,
+      "shift_audio": 3,
+      "model": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3SigmaShift",
+    "_meta": {
+      "title": "一采·SigmaShift"
+    }
+  },
+  "42": {
+    "inputs": {
+      "lora_name": "minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors",
+      "strength_model": 0.7,
+      "model": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "一采·Turbo LoRA（0.8）"
+    }
+  },
+  "45": {
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "二采·模型（可换W4A8高清）"
+    }
+  },
+  "46": {
+    "inputs": {
+      "selection": "sol-attn",
+      "selection.tau": 1.3,
+      "start_percent": 0.2,
+      "end_percent": 1,
+      "dense_blocks": "",
+      "min_tokens": 12288,
+      "extra_tokens": 256,
+      "sink_conditioning": "exact_kv_and_rows",
+      "verbose": false,
+      "model": [
+        "107",
+        0
+      ]
+    },
+    "class_type": "BlockSparseAttention",
+    "_meta": {
+      "title": "二采·稀疏注意力"
+    }
+  },
+  "47": {
+    "inputs": {
+      "shift_video": 8,
+      "shift_audio": 3,
+      "model": [
+        "46",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3SigmaShift",
+    "_meta": {
+      "title": "二采·SigmaShift"
+    }
+  },
+  "50": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "一采·采样器"
+    }
+  },
+  "51": {
+    "inputs": {
+      "scheduler": "simple",
+      "steps": 4,
+      "denoise": 1,
+      "model": [
+        "41",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "一采·调度（simple/4 步·4step LoRA）"
+    }
+  },
+  "52": {
+    "inputs": {
+      "model": [
+        "41",
+        0
+      ],
+      "conditioning": [
+        "90",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "一采·Guider"
+    }
+  },
+  "53": {
+    "inputs": {
+      "noise_seed": 656234341472713
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "一采·随机噪波"
+    }
+  },
+  "54": {
+    "inputs": {
+      "noise": [
+        "53",
+        0
+      ],
+      "guider": [
+        "52",
+        0
+      ],
+      "sampler": [
+        "50",
+        0
+      ],
+      "sigmas": [
+        "51",
+        0
+      ],
+      "latent_image": [
+        "22",
+        1
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "一采·采样执行"
+    }
+  },
+  "55": {
+    "inputs": {
+      "samples": [
+        "63",
+        0
+      ],
+      "vae": [
+        "22",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "一采·视频解码（普通）"
+    }
+  },
+  "56": {
+    "inputs": {
+      "samples": [
+        "63",
+        1
+      ],
+      "vae": [
+        "22",
+        3
+      ]
+    },
+    "class_type": "VAEDecodeAudio",
+    "_meta": {
+      "title": "一采·音频解码（普通，音频 VAE 不分块）"
+    }
+  },
+  "63": {
+    "inputs": {
+      "av_latent": [
+        "116",
+        0
+      ]
+    },
+    "class_type": "LTXVSeparateAVLatent",
+    "_meta": {
+      "title": "分离 AV latent（一采解码 / 二采共用）"
+    }
+  },
+  "64": {
+    "inputs": {
+      "video_latent": [
+        "106",
+        0
+      ],
+      "audio_latent": [
+        "63",
+        1
+      ]
+    },
+    "class_type": "LTXVConcatAVLatent",
+    "_meta": {
+      "title": "二采·合并AV latent"
+    }
+  },
+  "65": {
+    "inputs": {
+      "h3_context": [
+        "21",
+        1
+      ],
+      "second_pass_video_latent": [
+        "106",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3EasySecondPassConditioning",
+    "_meta": {
+      "title": "二采·条件"
+    }
+  },
+  "67": {
+    "inputs": {
+      "sampler_name": "er_sde"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "二采·采样器（er_sde）"
+    }
+  },
+  "68": {
+    "inputs": {
+      "model": [
+        "47",
+        0
+      ],
+      "conditioning": [
+        "65",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "二采·Guider"
+    }
+  },
+  "70": {
+    "inputs": {
+      "samples": [
+        "110",
+        0
+      ],
+      "vae": [
+        "22",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "二采·高清视频解码"
+    }
+  },
+  "80": {
+    "inputs": {
+      "fps": [
+        "22",
+        4
+      ],
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "images": [
+        "70",
+        0
+      ],
+      "audio": [
+        "56",
+        0
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "二采·成片（1080P）"
+    }
+  },
+  "81": {
+    "inputs": {
+      "fps": [
+        "22",
+        4
+      ],
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "images": [
+        "124",
+        0
+      ],
+      "audio": [
+        "91",
+        1
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "一采·成片"
+    }
+  },
+  "82": {
+    "inputs": {
+      "switch": false,
+      "on_false": [
+        "81",
+        0
+      ],
+      "on_true": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "LazySwitchKJ",
+    "_meta": {
+      "title": "二采开关"
+    }
+  },
+  "83": {
+    "inputs": {
+      "filename_prefix": "video/chained/result",
+      "format": "auto",
+      "format.codec": "auto",
+      "codec": "auto",
+      "video": [
+        "82",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "保存视频"
+    }
+  },
+  "90": {
+    "inputs": {
+      "context_length": "22",
+      "audio_context_length": 24,
+      "conditioning": [
+        "33",
+        0
+      ],
+      "vae": [
+        "22",
+        2
+      ],
+      "latent": [
+        "22",
+        1
+      ],
+      "context_latent": [
+        "92",
+        0
+      ],
+      "audio_vae": [
+        "22",
+        3
+      ]
+    },
+    "class_type": "MiniMaxH3MotionContext",
+    "_meta": {
+      "title": "★ Motion Context（片段衔接）"
+    }
+  },
+  "91": {
+    "inputs": {
+      "trim_frames": [
+        "90",
+        1
+      ],
+      "fps": true,
+      "match_tail": true,
+      "images": [
+        "115",
+        0
+      ],
+      "audio": [
+        "56",
+        0
+      ]
+    },
+    "class_type": "MiniMaxH3MotionContextTrim",
+    "_meta": {
+      "title": "★ Trim（裁掉开头延续帧）"
+    }
+  },
+  "92": {
+    "inputs": {
+      "latent_path": "",
+      "clip_index": 0
+    },
+    "class_type": "MiniMaxH3MotionContextLoadLatent",
+    "_meta": {
+      "title": "★ Load Latent（加载上一片段）"
+    }
+  },
+  "99": {
+    "inputs": {
+      "tile_width": 640,
+      "tile_height": 640,
+      "overlap_ratio": 0.25,
+      "fade_ratio": 0.5,
+      "min_tile_size": 256,
+      "seam_denoise": 1
+    },
+    "class_type": "MMH3SpatialSplitParamsV10",
+    "_meta": {
+      "title": "二采·空间分块（瓦片 640 / 重叠 25%）"
+    }
+  },
+  "100": {
+    "inputs": {
+      "chunk_frames": 124,
+      "temporal_overlap_frames": 22,
+      "anchor_strength": 0.999,
+      "motion_anchor_frames": "22",
+      "identity_anchor_frames": 24
+    },
+    "class_type": "MMH3TemporalSplitParamsV10",
+    "_meta": {
+      "title": "二采·时间分块（124 帧≈5.2s / 重叠 22）"
+    }
+  },
+  "101": {
+    "inputs": {
+      "cfg": 1,
+      "seam_polish": "auto",
+      "color_match": true,
+      "model": [
+        "47",
+        0
+      ],
+      "conditioning": [
+        "65",
+        0
+      ],
+      "latent": [
+        "64",
+        0
+      ],
+      "noise": [
+        "53",
+        0
+      ],
+      "sampler": [
+        "67",
+        0
+      ],
+      "temporal_split_param": [
+        "100",
+        0
+      ],
+      "spatial_split_param": [
+        "99",
+        0
+      ]
+    },
+    "class_type": "MMH3SplitUpscale",
+    "_meta": {
+      "title": "二采·分块超分（防爆显存）"
+    }
+  },
+  "102": {
+    "inputs": {
+      "switch": true,
+      "on_true": [
+        "101",
+        0
+      ]
+    },
+    "class_type": "LazySwitchKJ",
+    "_meta": {
+      "title": "二采开关：勾上=分块（省显存）"
+    }
+  },
+  "106": {
+    "inputs": {
+      "model_name": "minimax_h3_latent_upscaler_3d_bf16.safetensors",
+      "mode": "target dimensions",
+      "mode.width": 1280,
+      "mode.height": 704,
+      "align": 32,
+      "enable_temporal_chunking": true,
+      "force_unload": true,
+      "device": "cuda",
+      "precision": "fp16",
+      "latent": [
+        "63",
+        0
+      ]
+    },
+    "class_type": "MinimaxH3LatentUpscaler3D",
+    "_meta": {
+      "title": "二采·3D latent 放大（→1280×704）"
+    }
+  },
+  "107": {
+    "inputs": {
+      "lora_name": "minimax_h3_fl2v_turbo_4step_v1.0_768p_comfyui_bf16.safetensors",
+      "strength_model": 0.7,
+      "model": [
+        "45",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "一采·Turbo LoRA（0.8）"
+    }
+  },
+  "108": {
+    "inputs": {
+      "upscale_width": 1465,
+      "upscale_height": 824,
+      "tile_size_mode": "specific_size",
+      "tile_width": 512,
+      "tile_height": 512,
+      "grid_rows": 2,
+      "grid_cols": 2,
+      "spatial_w_overlap": 128,
+      "spatial_h_overlap": 128,
+      "fade_width": 32,
+      "fade_height": 32,
+      "min_tile_size": 256,
+      "overlap_mode": "earlier",
+      "overlap_blend": "linear"
+    },
+    "class_type": "MMH3SpatialSplitParams",
+    "_meta": {
+      "title": "二采·空间分块（2×2 / 512）"
+    }
+  },
+  "109": {
+    "inputs": {
+      "chunk_length": 119,
+      "temporal_overlap": 17,
+      "anchor_strength": 0.999
+    },
+    "class_type": "MMH3TemporalSplitParams",
+    "_meta": {
+      "title": "二采·时间分块（119 帧≈5s / 重叠 17）"
+    }
+  },
+  "110": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "47",
+        0
+      ],
+      "conditioning": [
+        "65",
+        0
+      ],
+      "latent": [
+        "64",
+        0
+      ],
+      "noise": [
+        "53",
+        0
+      ],
+      "sampler": [
+        "67",
+        0
+      ],
+      "sigmas": [
+        "111",
+        0
+      ],
+      "temporal_split_param": [
+        "109",
+        0
+      ],
+      "spatial_split_param": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "MMH3UltimateUpscale",
+    "_meta": {
+      "title": "二采·分块超分（防爆显存）"
+    }
+  },
+  "111": {
+    "inputs": {
+      "scheduler": "simple",
+      "steps": 4,
+      "denoise": 0.25,
+      "model": [
+        "47",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "二采·调度（simple/6 步/denoise 0.37）"
+    }
+  },
+  "112": {
+    "inputs": {
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "63",
+        0
+      ],
+      "vae": [
+        "22",
+        2
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "一采·视频解码（VAE 分块）"
+    }
+  },
+  "114": {
+    "inputs": {
+      "value": true
+    },
+    "class_type": "PrimitiveBoolean",
+    "_meta": {
+      "title": "一采分块解码开关（1080P 时打开）"
+    }
+  },
+  "115": {
+    "inputs": {
+      "switch": [
+        "114",
+        0
+      ],
+      "on_false": [
+        "55",
+        0
+      ],
+      "on_true": [
+        "112",
+        0
+      ]
+    },
+    "class_type": "LazySwitchKJ",
+    "_meta": {
+      "title": "视频解码：普通 / 分块"
+    }
+  },
+  "116": {
+    "inputs": {
+      "file": "Latent_N.safetensors",
+      "stage": "main",
+      "project_id": "ComfyUI",
+      "meta": "[object Object]",
+      "latent": [
+        "54",
+        1
+      ]
+    },
+    "class_type": "DreamStudio_LatentSave",
+    "_meta": {
+      "title": "造梦 · 续写 latent 保存"
+    }
+  },
+  "124": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "91",
+        0
+      ],
+      "batch_index": 1,
+      "length": 243
+    }
+  }
+}

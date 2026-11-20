@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Dream Studio",
+    "description": "Production side for animated shorts: reads the series.json written by the dream-studio-h3 skill, manages the asset library, drives ComfyUI, and renders clips. Includes second pass, 2K/4K upscale, frame interpolation, and an embedded ComfyUI tab.",
+    "detail": "docs/DETAIL.md"
+  }
+}

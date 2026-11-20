@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="时空造梦">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fd4ff"/>
+      <stop offset="1" stop-color="#4a63d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#101728"/>
+  <path d="M20 12h24M20 52h24" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M22 14c0 9 8 12 10 18-2 6-10 9-10 18h20c0-9-8-12-10-18 2-6 10-9 10-18z" fill="none" stroke="url(#g)" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="32" cy="32" r="2.4" fill="#9fe6ff"/>
+  <circle cx="49" cy="15" r="1.8" fill="#8fb4ff"/>
+  <circle cx="15" cy="47" r="1.5" fill="#8fb4ff"/>
+  <circle cx="51" cy="49" r="1.2" fill="#6f8ce8"/>
+</svg>

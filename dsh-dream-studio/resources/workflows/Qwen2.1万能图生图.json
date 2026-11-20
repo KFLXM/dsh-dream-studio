@@ -1,0 +1,238 @@
+{
+  "1": {
+    "inputs": {
+      "unet_name": "Qwen_image_2.1_bf16.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "加载 Qwen-Image-2.1 大模型"
+    }
+  },
+  "2": {
+    "inputs": {
+      "clip_name": "qwen3vl_8b_bf16.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载 Qwen CLIP 文本编码器（必须 qwen3vl_8b）"
+    }
+  },
+  "3": {
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载 Qwen-Image-2.1 VAE（必须 2.1 专用，见说明）"
+    }
+  },
+  "4": {
+    "inputs": {
+      "shift": 3,
+      "sampling": "flow",
+      "model": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingAuraFlow",
+    "_meta": {
+      "title": "Qwen 采样配置（必须）"
+    }
+  },
+  "8": {
+    "inputs": {
+      "seed": 263329460264765,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "21",
+        0
+      ],
+      "negative": [
+        "21",
+        1
+      ],
+      "latent_image": [
+        "26",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "采样器（图生图，20 步）"
+    }
+  },
+  "9": {
+    "inputs": {
+      "samples": [
+        "8",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE 解码"
+    }
+  },
+  "10": {
+    "inputs": {
+      "filename_prefix": "qwen_image21_i2i",
+      "images": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图片（开关控制输出）"
+    }
+  },
+  "12": {
+    "inputs": {
+      "lora_name": "Qwen2.1\\ZIT-LoRA_AICG_GIMAGE2_STYLE_0.0.2_c2-st8000.safetensors",
+      "strength_model": 0.7,
+      "strength_clip": 1,
+      "model": [
+        "13",
+        0
+      ],
+      "clip": [
+        "13",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "加载 LoRA（可选）"
+    }
+  },
+  "13": {
+    "inputs": {
+      "lora_name": "Qwen2.1\\zhican21_c1-st9000.safetensors",
+      "strength_model": 0.7,
+      "strength_clip": 1,
+      "model": [
+        "1",
+        0
+      ],
+      "clip": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "加载 LoRA（可选）"
+    }
+  },
+  "20": {
+    "inputs": {
+      "image": "qwen_image21_t2i_00159_.png [output]"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "底图（要编辑的图）"
+    }
+  },
+  "21": {
+    "inputs": {
+      "prompt": "把画面分成大小完全一致的四块，无分割线。四块画同一场戏的连续故事板：剑冢深夜，师兄给从天而降的师妹一个冷馒头。人物长相、发型、服饰严格参考<image1>（男子萧陌）与<image2>（少女玲珑），场景按下列描述；四格共用同一处剑冢、同一时段（深夜，月光自顶直下）。\n\n【重要：人物站位规则】萧陌（墨黑高马尾、素银三棱发冠、月白与霜青相间窄袖长袍）始终位于画面左侧，玲珑（浅银白发半束、月白素白短打、赤足）始终位于画面右侧，四格中两人的左右位置完全一致、绝不互换。所有镜头变化只改变景别和机位，不改变两人的左右站位关系。\n\n人物形象：\n<image1> 男子萧陌——墨黑长发高束，素银三棱发冠，面容清冷，月白与霜青相间窄袖长袍，银线云纹，腰束霜青宽腰封，左手无鞘剑；\n<image2> 少女玲珑——浅银白发半束，月白细发带，浅琥珀色杏眼，素白交领短打，赤足踝系银铃，怀里抱一柄断剑。\n\n场景：地下圆形剑冢，圆形青石台，台边偏右一道新炸开的坑，石台正中插一柄漆黑古剑；环形石壁插满残剑；冢顶开口，月光直下成一束光柱，冷雾贴地。\n\n四格分镜（严格遵守站位规则）：\n左上格——中景：萧陌在画面左侧立在石台边，从袖中摸出一个冷馒头，表情平淡；玲珑在画面右侧坐在坑沿，仰头看他，双手还抱着断剑。月光柱从两人之间落下，古剑在背景虚焦。\n右上格——玲珑近景：玲珑在画面右侧，身体微微前倾，浅琥珀色的眼睛盯着那个馒头，眼睛发亮，嘴唇微张，白发被月光照得发亮。背景是坑沿的碎石与冷雾。\n左下格——玲珑近景：玲珑在画面右侧，双手接过馒头咬了一大口，腮帮子鼓起来，眼睛还盯着萧陌的方向，断剑搁在膝上。月光落在她的发顶。\n右下格——剑冢中景：萧陌在画面左侧站着，双臂垂在身侧，看她吃；玲珑在画面右侧坐在坑沿，低头啃馒头。两人隔着石台与那柄漆黑古剑，月光柱落在两人中间，冷雾在地面缓缓移动。\n\n电影级仙侠写实风，高级CG国漫质感，冷白月光与淡青冷雾对比，自然景深，人物五官与服饰细节与参考图一致，四格人物左右站位严格一致，无文字，无水印，无多余人物。",
+      "negative_prompt": "",
+      "resolution": 1440,
+      "clip": [
+        "12",
+        1
+      ],
+      "images.image_1": [
+        "20",
+        0
+      ],
+      "images.image_2": [
+        "22",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImage21",
+    "_meta": {
+      "title": "Text Encode Qwen Image 2.1（图生图/编辑）"
+    }
+  },
+  "22": {
+    "inputs": {
+      "image": "qwen_image21_t2i_00160_.png [output]"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "底图（要编辑的图）"
+    }
+  },
+  "26": {
+    "inputs": {
+      "upscale_method": "bilinear",
+      "width": 1376,
+      "height": 768,
+      "crop": "center",
+      "samples": [
+        "21",
+        2
+      ]
+    },
+    "class_type": "LatentUpscale",
+    "_meta": {
+      "title": "缩放Latent"
+    }
+  },
+  "27": {
+    "inputs": {
+      "rows": 2,
+      "cols": 2,
+      "overlap": 0,
+      "overlap_x": 0,
+      "overlap_y": 0,
+      "image": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "ImageTile+",
+    "_meta": {
+      "title": "自适应切块（2x2，自动计算尺寸）"
+    }
+  },
+  "29": {
+    "inputs": {
+      "boolean": true,
+      "image_a": [
+        "27",
+        0
+      ],
+      "image_b": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "easy imageSwitch",
+    "_meta": {
+      "title": "切块开关（False=单张，True=四宫格自动切块）"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "时空造梦",
+    "description": "漫剧/短剧制作端：读技能产出的 series.json，管素材库、跑 ComfyUI、出成片；含独立二采、2K/4K 放大、补帧与整页嵌 ComfyUI 的时空节点。",
+    "detail": "docs/DETAIL.md"
+  }
+}
